@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Adoption Center</h1>
+    <div><a href="/add">Add Pets</a></div>
+    {% for i in pets %}
+        {% if i.photo_url %}
+            <img src="{{i.photo_url}}" width="150" height="150">
+        {% endif %}
+        {% if i.available == True %}
+            <a href="/pet/{{i.id}}/edit">Edit {{i.name}}</a>
+            <p><b>{{i.name}}</b> is available for adoption</p>
+        {% else %}
+            <li>{{i.name}}</li>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
